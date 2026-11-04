@@ -9,11 +9,10 @@ import java.util.List;
 
 @Service
 public class RoomService {
-    private RoomRepository roomRepository;
-    private BookingRepository bookingRepository;
+    private final RoomRepository roomRepository;
+
     public RoomService(RoomRepository roomRepository, BookingRepository bookingRepository) {
         this.roomRepository = roomRepository;
-        this.bookingRepository = bookingRepository;
     }
     public List<Room> findAll() {
         return roomRepository.findAll();

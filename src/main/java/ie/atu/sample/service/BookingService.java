@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -23,7 +24,7 @@ public class BookingService {
     public List<Booking> getALL(){
         return bookingRepository.findAll();
     }
-    public List<Booking> getByAmount(int amount){
+    public List<Booking> getByAmount(BigDecimal amount){
         return bookingRepository.findByAmount(amount);
     }
     public Booking createBooking(CreateBookingRequest request){
