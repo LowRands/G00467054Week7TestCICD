@@ -23,20 +23,24 @@ public class BookingService {
     public List<Booking> getALL(){
         return bookingRepository.findAll();
     }
+    public List<Booking> getByAmount(int amount){
+        return bookingRepository.findByAmount(amount);
+    }
     public Booking createBooking(CreateBookingRequest request){
-        if(request.roomId() == null){
+        if(request.RoomId() == null){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Room ID required");
         }
         if(request.name() == null){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Booking name required");
         }
         Room room = roomRepository
-                .findById(request.roomId())
+                .findById(request.RoomId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Room not found"));
         Booking booking = new Booking();
         return bookingRepository.save(booking);
     }
-    public List<Booking> getBookingsByRoomId(String roomId){
+    public List< Booking >getByRoomId(String roomId){
         return roomRepository.findByRoomId(roomId);
     }
+
 }
